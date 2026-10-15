@@ -21,6 +21,9 @@ const cardNote = document.querySelector('#card-note');
 // const button = document.querySelector('.object');
 const buttons = document.querySelectorAll('.object');
 const close = document.querySelector('#card-close');
+const total = buttons.length;
+const counter = document.querySelector('#counter');
+const hooray = document.querySelector('#complete');
 
 // Array of Objects, they start at 0 and will have naming convention items[].name
 const items = [
@@ -51,6 +54,19 @@ function makeInvisible() {
     console.log("closed!");
 }
 
+function updateCounter() {
+    // You have to declare this variable within the function so it can update every time your run the function, not just when the page loads.
+    const found = document.querySelectorAll('.object.discovered'); //The .length of this variable is my count. 
+    // This works better than "found = found + 1" because your count won't inflate indefinitely from repeated clicks. Each time you run this query, 
+    // it will check the state of the buttons' classes. And when you repeat click a button, it already has the updated class of .discovered so 
+    // nothing really changes or exponentially grows. Deriving numbers from the current state instead of tallying them is a pattern you’ll use constantly, in Three.js and Unity too.
+    counter.textContent = `${found.length} of ${total} discovered`; //template literal where the ${} houses any variables I want to insert
+    // console.log(found, buttons);
+    if (found.length === total) {
+        hooray.hidden = false;
+    }
+}
+
 // Adding 'DOMContentLoaded' to the listener ensures that the event listeners are added only after the entire 
 // HTML document has been fully loaded and parsed. This prevents any potential issues with trying to access 
 // elements that may not yet exist in the DOM when the script runs.
@@ -65,12 +81,14 @@ function makeInvisible() {
 // If we were to use a script without the 'defer' attribute, we would have to use the DOMContentLoaded event listener and place the
 // const reference variables inside the event listener to ensure they are defined after the DOM is fully loaded.
 
-
+// EVENT LISTENERS ---------------------------------------------------------------------------
 // Revised event listener setup without 'DOMContentLoaded' wrapper since the script is deferred:
 buttons.forEach((button) => {
     // to avoid makeVisible running NOW, make it an arrow function
     button.addEventListener('click', () => {
         makeVisible(button.dataset.index); //button.dataset.index is a String type. If I ever need to do math with it, I need to wrap it in Number().
+        button.classList.add('discovered');
+        updateCounter()
     });
 });
 
@@ -78,3 +96,5 @@ close.addEventListener('click', makeInvisible);
 
 // the function we give to the listener should NOT have the () e.g. makeVisible() attached. because that is
 // defined as running the function RIGHT NOW instead of running the function when someone clicks.
+
+updateCounter()

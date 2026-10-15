@@ -38,26 +38,19 @@ video {
 	max-width: 100%;
 }
 
-button {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: #31442d;
-    border-radius: 50%;
-    position: absolute;
-    top: 40%;
-    left: 25%;
-}
-
-.object {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: #31442d;
-    border-radius: 50%;
-    position: absolute;
-}
-
 a {
 	color: var(--color-primary);
+}
+
+/* End of boilerplate */
+
+.object {
+	width: 3rem;
+	height: 3rem;
+	color: #f0e7d9;
+	background-color: #31442d;
+	border-radius: 50%;
+	position: absolute;
 }
 
 .container {
@@ -66,9 +59,53 @@ a {
 }
 
 .scene {
-    position: relative;
-    height: 500px;
-    background-color: #e3d5bf;
+	position: relative;
+	height: 500px;
+	background-color: #e3d5bf;
+}
+
+/* ⚠️ The order matters! If I had put this before .object, this background color wouldn't change in the buttons upon click. Whichever class is declared last wins!*/
+.discovered {
+	background-color: #708e6a;
+	box-shadow: 0 0 5px rgb(146, 114, 19);
+}
+
+/* ⚠️ If you add a display property like 'display: flex' it will mess with the hidden settings. The css will override hidden's 'display: none' functionality. */
+.card {
+	/* Basic pattern for floating an element in the center of the screen. */
+	position: fixed;
+	/* postions card relative to browser so card will stay centered even if page scrolls */
+	top: 50%;
+	/* places the card’s top-left corner at the center of the screen, which leaves the card itself off-center, down and to the right */
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* shifts the card back by half its own width and height, so its middle lands on the center. Percentages in translate refer to the element’s own size, which is why this works */
+	/* All other panel design choices */
+	background-color: rgba(211, 223, 202);
+	padding: 2rem;
+	border-radius: 1rem;
+	box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.389);
+	width: min(90%, 24rem);
+	z-index: 10;
+	/* kinda like layer order. This makes sure the card floats above any other objects on the page */
+}
+
+#card-close {
+	background-color: #204027;
+	color: white;
+	padding: 12px 24px;
+	font-size: 16px;
+	font-weight: bold;
+	border: none;
+	border-radius: 8px;
+	/* Simulates vertical depth */
+	box-shadow: 0 3px #4e6954;
+	transition: all 0.1s ease;
+}
+
+#card-close:hover {
+	background-color: #4e6954;
+	box-shadow: 0 3px #728e78;
 }
 
 @media (prefers-reduced-motion: reduce) {
