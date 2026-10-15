@@ -1,0 +1,42 @@
+<!-- Dev Start: 10.14.26 | SGAE -->
+<!-- VS Code now has Emmett installed by default. 
+ To get the html boilerplate type ! and press Tab in an empty html file. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosity Cabinet</title>
+
+    <!-- DONT FORGET TO LINK CSS AND SCRIPTS -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <!-- The defer attribute ensures the script is executed after the HTML is parsed. -->
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Curiosity Cabinet</h1>
+        <p>Explore a collection of fascinating botanical artifacts from around the world.</p>
+
+        <!-- to create this div with Emmett type: div.scene + Tab -->
+        <div class="scene">
+            <!-- data- attributes are HTML’s built-in way to attach your own info to an element.
+             You can name them anything after data-, and JavaScript can read them. -->
+            <button class="object" data-index="0" style="top: 20%; left: 25%;">Phoenix Feather</button>
+            <button class="object" data-index="1" style="top: 20%; left: 50%;">Leppa Berry</button>
+            <button class="object" data-index="2" style="top: 20%; left: 75%;">Quick Claw</button>
+        </div>
+
+        <div class="card" id="card" hidden>
+            <h2 id="card-title">First Object</h2>
+            <p id="card-note">A short note about this mysterious object.</p>
+            <button id="card-close">Close</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
