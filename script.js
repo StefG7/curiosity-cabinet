@@ -25,6 +25,10 @@ const total = buttons.length;
 const counter = document.querySelector('#counter');
 const hooray = document.querySelector('#complete');
 
+// const = this name will always point to the same thing
+// let = this value can change later
+let lastOpened; // empty variable
+
 // Array of Objects, they start at 0 and will have naming convention items[].name
 const items = [
     {
@@ -46,12 +50,15 @@ function makeVisible(index) {
     card.hidden = false;
     cardTitle.textContent = items[index].name;
     cardNote.textContent = items[index].note;
+    close.focus()
     console.log("opened!");
 }
 
 function makeInvisible() {
     card.hidden = true;
     console.log("closed!");
+    lastOpened.focus();
+    console.log(lastOpened);
 }
 
 function updateCounter() {
@@ -89,10 +96,17 @@ buttons.forEach((button) => {
         makeVisible(button.dataset.index); //button.dataset.index is a String type. If I ever need to do math with it, I need to wrap it in Number().
         button.classList.add('discovered');
         updateCounter()
+        lastOpened = button; //logging the last object clicked so focus can return here
     });
 });
 
 close.addEventListener('click', makeInvisible);
+document.addEventListener('keydown', (event) => {
+    if (event.key === "Escape" && !card.hidden) {
+        console.log("hi");
+        makeInvisible()
+    }
+});
 
 // the function we give to the listener should NOT have the () e.g. makeVisible() attached. because that is
 // defined as running the function RIGHT NOW instead of running the function when someone clicks.

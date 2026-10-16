@@ -37,5 +37,5 @@ curiosity-cabinet/
 ## Where I am now
 **Task 1:** one button that opens one hardcoded card, with a close button that hides it again. I'm using `querySelector` and `addEventListener`.
 
-**Done:** data array, three objects with data-index, one reusable card, discovered state, counter, completion message, card styled as a floating panel.
-**Next:** keyboard and accessibility checks, then swapping in real art.
+**Done:** data array, three objects with data-index, one reusable card, discovered state, counter, completion message, card styled as a floating panel, keyboard support (Escape closes the card, focus moves into the card and back).
+**Next:** announce the completion message to screen readers, then art, then publish.
