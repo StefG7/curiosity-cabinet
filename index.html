@@ -20,8 +20,12 @@
     <div class="container">
         <h1>Welcome to the Curiosity Cabinet</h1>
         <p>Explore a collection of fascinating botanical artifacts from around the world.</p>
-        <p id="counter">0 of 3 discovered</p>
-        <p id="complete" hidden>✨ You've discovered everything in the cabinet! ✨</p>
+
+        <!-- aria-live="polite" is already built into role="status" AND make it atomic because we want the full sentence change to be announced, not just the numbers that changed. -->
+        <div role="status" aria-atomic="true"> 
+            <p id="counter">0 of 3 discovered</p>
+            <p id="complete" hidden>✨ You've discovered everything in the cabinet! ✨</p>
+        </div>
 
         <!-- to create this div with Emmett type: div.scene + Tab -->
         <div class="scene">
@@ -32,7 +36,8 @@
             <button class="object" data-index="2" style="top: 20%; left: 75%;">Quick Claw</button>
         </div>
 
-        <div class="card" id="card" hidden>
+        <!-- We have made this a dialog, so the screenreaders can properly read the content in the card, and the -1 tab index allows us to add focus to the whole div without making it tabable before the user has selected the buttons. -->
+        <div class="card" id="card" hidden role="dialog" aria-labelledby="card-title" aria-describedby="card-note counter" tabindex="-1"> 
             <h2 id="card-title">First Object</h2>
             <p id="card-note">A short note about this mysterious object.</p>
             <button id="card-close">Close</button>

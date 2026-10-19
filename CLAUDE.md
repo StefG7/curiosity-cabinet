@@ -37,5 +37,7 @@ curiosity-cabinet/
 ## Where I am now
 **Task 1:** one button that opens one hardcoded card, with a close button that hides it again. I'm using `querySelector` and `addEventListener`.
 
-**Done:** data array, three objects with data-index, one reusable card, discovered state, counter, completion message, card styled as a floating panel, keyboard support (Escape closes the card, focus moves into the card and back).
-**Next:** announce the completion message to screen readers, then art, then publish.
+**Done:** data array, three objects with data-index, one reusable card, discovered state, counter, completion message, card styled as a floating panel, keyboard support (Escape closes the card, focus moves into the card and back), live region for the counter, card set up as a dialog (role, aria-labelledby, aria-describedby, tabindex="-1" with focus on the card).
+**Open issue:** focus moving into the card drowns out the counter announcement in VoiceOver.
+**Options:** show progress inside the card, or find another way to time the announcement.
+**Next:** art, then publish.

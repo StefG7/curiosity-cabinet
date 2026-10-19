@@ -50,7 +50,7 @@ function makeVisible(index) {
     card.hidden = false;
     cardTitle.textContent = items[index].name;
     cardNote.textContent = items[index].note;
-    close.focus()
+    card.focus();
     console.log("opened!");
 }
 
